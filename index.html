@@ -264,7 +264,6 @@ body{
 <body>
 
 <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
-<div class="toast" id="toast"><div class="toast-spin" id="toastSpin"></div><span id="toastTxt">저장 중...</span></div>
 
 <div class="wrap">
 
@@ -463,12 +462,8 @@ function valQ(qId){
 
 // ── Save ──
 async function saveData(qId,answer){
-  const toast=document.getElementById('toast'),txt=document.getElementById('toastTxt'),spin=document.getElementById('toastSpin');
-  toast.classList.add('show');txt.textContent='저장 중...';spin.style.display='block';
   const payload={sessionId:sid,albaId:albaId,questionId:qId,answer:Array.isArray(answer)?answer.join(', '):(answer||''),etcText:answers[qId+'_etc']||'',timestamp:new Date().toISOString()};
-  try{if(APPS_SCRIPT_URL){await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}
-    spin.style.display='none';txt.textContent='✓ 저장됨';setTimeout(()=>toast.classList.remove('show'),1000);
-  }catch(e){toast.classList.remove('show');}
+  try{if(APPS_SCRIPT_URL){fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}}catch(e){}
 }
 
 // ── Progress ──
