@@ -324,7 +324,7 @@ body{
 </div>
 
 <script>
-const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbz30kImvZ63ZOie5xKtktZ5BnhHOlYHYGb848ST0XU13JB3UUWYqwjXke1TDwle6btD/exec';
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwqrWz-TcscFn6UXfDpBqjD7kXkh5CaaRBn12QEWLj8GaTcUD9enMvAq2Dg4GdAdrqQ/exec';
 const sid='S_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 const answers={};
 let curIdx=0,flow=[];
@@ -337,7 +337,7 @@ const albaId=urlParams.get('alba_id')||'';
 // 페이지 진입 시 즉시 로그
 (function(){
   const payload={sessionId:sid,albaId:albaId,questionId:'_PAGE_VIEW',answer:window.location.href,etcText:'',timestamp:new Date().toISOString()};
-  try{if(APPS_SCRIPT_URL){fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}}catch(e){}
+  try{fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(e){}
 })();
 
 // ── Phone ──
